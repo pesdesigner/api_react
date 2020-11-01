@@ -9,6 +9,9 @@ const Home = mongoose.model('Home');
 require('./models/about');
 const About = mongoose.model('About');
 
+require('./models/contact');
+const Contact = mongoose.model('Contact');
+
 const app = express();
 app.use(express.json());
 
@@ -84,6 +87,19 @@ app.post('/about', (req, res) => {
     return res.json({
         error: false,
         message: 'conteúdo cadastrado com sucesso!'
+    })
+});
+
+app.post('/contact', (req, res) => {
+    Contact.create(req.body, (err) => {
+        if(err) return res.status(400).json({
+            erro: true,
+            message: 'Erro: mensagem não enviada com sucesso'
+        })
+    })
+    return res.json({
+        error: false,
+        message: 'Mensagem enviada com sucesso!'
     })
 })
 

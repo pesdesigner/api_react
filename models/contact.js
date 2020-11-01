@@ -1,22 +1,22 @@
 const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var about = new Schema({
-    title: {
+var contact = new Schema({
+    name: {
         type: String
     },
-    desc: {
+    email: {
         type: String
     },
-    originName: {
+    subject: {
         type: String
     },
-    fileName: {
+    message: {
         type: String
     }
 },
     {
-        timestamps: true //creatAt updateAt
+        timestamps: true
     }
 );
-mongoose.model('About', about);
+mongoose.model('Contact', contact);
